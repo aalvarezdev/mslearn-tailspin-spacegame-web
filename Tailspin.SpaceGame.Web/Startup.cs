@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TailSpin.SpaceGame.Web.Models;
 using Microsoft.AspNetCore.Http;
-
+using Tailspin.SpaceGame.Web.Application;
 
 namespace TailSpin.SpaceGame.Web
 {
@@ -37,6 +37,7 @@ namespace TailSpin.SpaceGame.Web
             // Add document stores. These are passed to the HomeController constructor.
             services.AddSingleton<IDocumentDBRepository<Score>>(new LocalDocumentDBRepository<Score>(@"SampleData/scores.json"));
             services.AddSingleton<IDocumentDBRepository<Profile>>(new LocalDocumentDBRepository<Profile>(@"SampleData/profiles.json"));
+            services.AddSingleton<IMathModels, MathModels>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
